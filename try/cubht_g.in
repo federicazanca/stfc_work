@@ -1,0 +1,65 @@
+&CONTROL
+   calculation      = 'scf'
+   verbosity        = 'normal'
+   restart_mode     = 'from_scratch'
+   tstress          = .false.
+   tprnfor          = .true.
+   outdir           = './uio-scf'
+   prefix           = '_scf'
+   disk_io          = 'none'
+   pseudo_dir       = '/home/vol08/scarf1228/pseudos/'
+/
+&SYSTEM
+   ecutwfc          = 50
+   ecutrho          = 450
+   occupations      = 'smearing'
+   degauss          = 0.001
+   smearing         = 'm-p'
+   input_dft        = 'VDW-DF2-B86R'
+   ntyp             = 3
+   nat              = 15
+   ibrav            = 0
+/
+&ELECTRONS
+   electron_maxstep = 200
+   scf_must_converge = .true.
+   conv_thr         = 1e-10
+   mixing_beta      = 0.25
+   diago_david_ndim = 4
+   startingpot      = 'atomic'
+   startingwfc      = 'atomic+random'
+/
+&IONS
+/
+&CELL
+/
+
+ATOMIC_SPECIES
+C 12.011 C.pbe-n-rrkjus_psl.1.0.0.UPF
+S 32.06 S.pbe-n-rrkjus_psl.1.0.0.UPF
+Cu 63.546 Cu 63.546 Cu.pbe-dn-rrkjus_psl.1.0.0.UPF
+
+K_POINTS gamma
+
+CELL_PARAMETERS angstrom
+8.75000000000000 0.00000000000000 0.00000000000000
+-4.37500000000000 7.57772228311384 0.00000000000000
+0.00000000000000 0.00000000000000 3.38000000000000
+
+ATOMIC_POSITIONS angstrom
+C 7.5278787500 0.7055920327 0.7399834000 
+C 4.3750043750 6.1665306401 0.7399834000 
+C 1.2221300000 0.7055920327 0.7399834000 
+C -3.1528787500 6.8721302504 0.7399834000 
+C -0.0000043750 1.4111916431 0.7399834000 
+C 3.1528700000 6.8721302504 0.7399834000 
+S 6.0392412500 1.5650572940 0.7399834000 
+S 4.3749956250 4.4476152728 0.7399834000 
+S 2.7107500000 1.5650572940 0.7399834000 
+S -1.6642412500 6.0126649891 0.7399834000 
+S 0.0000043750 3.1301070103 0.7399834000 
+S 1.6642500000 6.0126649891 0.7399834000 
+Cu 4.3750000000 0.0000000000 0.7399834000 
+Cu -2.1875000000 3.7888611416 0.7399834000 
+Cu 2.1875000000 3.7888611416 0.7399834000 
+

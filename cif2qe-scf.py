@@ -58,7 +58,8 @@ pots = { 'C':'C.pbe-n-rrkjus_psl.1.0.0.UPF',
          'N':'N.pbe-n-rrkjus_psl.1.0.0.UPF',
          'Pd':'Pd.pbe-spn-rrkjus_psl.1.0.0.UPF',
          'S':'S.pbe-n-rrkjus_psl.1.0.0.UPF',
-         'I':'I.pbe-n-kjpaw_psl.0.2.UPF', 'Cu 63.546 Cu.pbe-dn-rrkjus_psl.1.0.0.UPF'}
+         'I':'I.pbe-n-kjpaw_psl.0.2.UPF', 
+         'Cu': 'Cu 63.546 Cu.pbe-dn-rrkjus_psl.1.0.0.UPF'}
 
 a.wrap()
 write(to,a,input_data=opts,pseudopotentials = pots, crystal_coordinates=False,  format="espresso-in")

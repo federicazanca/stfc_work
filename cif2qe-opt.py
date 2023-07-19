@@ -42,7 +42,7 @@ opts = {
     'tprnfor'      : True,            #calculate forces. It is set to .TRUE. automatically if calculation == 'relax','md','vc-md'
     'verbosity'    : "normal",        #Default:	'low'
     'outdir'       : './uio-opt',     
-    'pseudo_dir'   : "../pseudos/",
+    'pseudo_dir'   : "/home/vol08/scarf1228/pseudos/",
     'disk_io'      : "none",          #Default is 'low' for the scf case, 'medium' otherwise. Defines what to store in memory
     'restart_mode' : 'from_scratch',  #Default:	'from_scratch'
     'nstep'        : 400,             #Default:	1 if calculation == 'scf', 'nscf', 'bands'; 50 for the other cases. number of molecular-dynamics or structural optimization steps

@@ -41,8 +41,8 @@ opts = {
     'tstress'   : False,              #Default:	.false. calculate stress. It is set to .TRUE. automatically if calculation == 'vc-md' or 'vc-relax'
     'tprnfor'      : True,            #calculate forces. It is set to .TRUE. automatically if calculation == 'relax','md','vc-md'
     'verbosity'    : "normal",        #Default:	'low'
-    'outdir'       : './uio-opt',     #to define correctly
-    'pseudo_dir'   : "../pseudos/",   #to define correctly
+    'outdir'       : './uio-scf',     #to define correctly
+    'pseudo_dir'   : "/home/vol08/scarf1228/pseudos/",   #to define correctly
     'disk_io'      : "none",          #Default is 'low' for the scf case, 'medium' otherwise. Defines what to store in memory
     'restart_mode' : 'from_scratch',  #Default:	'from_scratch'
     'scf_must_converge' : True,       #Default:	.TRUE. If .false. do not stop molecular dynamics or ionic relaxation when electron_maxstep is reached. Use with care.

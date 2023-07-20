@@ -65,14 +65,10 @@ if n_of_infiles == 1 and n_of_gamma == 1:
         newfile = sys.argv[1]+"/"+mof+"_"+str(i)+".in"
         shutil.copyfile(sys.argv[1]+"/"+mof+"_g.in", newfile)
         replace(newfile, "K_POINTS gamma", "K_POINTS automatic \n"+ str(i) + " " + str(i) + " " + str(i) + " 0 0 0")
-        os.system(f"cd {sys.argv[1]}; sbatch *.slurm")
+    os.system(f"cd {sys.argv[1]}; sbatch *.slurm")
 #second case: there are no input files
 elif n_of_infiles == 0:
     print("no input files found")
 #third case: there are already more input files
 else:
     print("too many .in files")
-
-
-
-

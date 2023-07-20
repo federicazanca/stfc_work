@@ -52,7 +52,7 @@ def replace(file_path, pattern, subst):
 target_folder = sys.argv[1]
 
 #N is the number of files that we want to create
-N = 2
+N = 16
 #we are inside a folder and check how many input files are there.
 #we are going to run the k-point convergence so ideally we should only have one input file and it should end with _g.in (gamma point)
 n_of_infiles = files_endingwith(target_folder,'.in')

@@ -67,7 +67,7 @@ if n_of_infiles == 1 and n_of_gamma == 1:
         newfile = target_folder+"/"+mof+"_"+str(i)+".in"
         shutil.copyfile(target_folder+"/"+mof+"_g.in", newfile)
         replace(newfile, "K_POINTS gamma", "K_POINTS automatic \n"+ str(i) + " " + str(i) + " " + str(i) + " 0 0 0")
-    os.system(f"cd {target_folder}; sbatch *.slurm")
+        os.system(f"cd {target_folder}; sbatch *.slurm")
 #second case: there are no input files
 elif n_of_infiles == 0:
     print("no input files found")

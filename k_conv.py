@@ -49,23 +49,25 @@ def replace(file_path, pattern, subst):
     #Move new file
     move(abs_path, file_path)
 
+target_folder = sys.argv[1]
+
 #N is the number of files that we want to create
 N = 2
 #we are inside a folder and check how many input files are there.
 #we are going to run the k-point convergence so ideally we should only have one input file and it should end with _g.in (gamma point)
-n_of_infiles = files_endingwith(sys.argv[1],'.in')
-n_of_gamma = files_endingwith(sys.argv[1],'_g.in')
+n_of_infiles = files_endingwith(target_folder,'.in')
+n_of_gamma = files_endingwith(target_folder,'_g.in')
 print("There are " + str(n_of_infiles) + " input files in the folder")
 print("There are " + str(n_of_gamma) + " input files with gamma only in the folder")
 #first case, there is 1 input file and is gamma
 if n_of_infiles == 1 and n_of_gamma == 1:
     print("1 input file and it is gamma, calculation can start")
-    mof = mofname(sys.argv[1],"_g.in")
+    mof = mofname(target_folder,"_g.in")
     for i in range(1, N+1):
-        newfile = sys.argv[1]+"/"+mof+"_"+str(i)+".in"
-        shutil.copyfile(sys.argv[1]+"/"+mof+"_g.in", newfile)
+        newfile = target_folder+"/"+mof+"_"+str(i)+".in"
+        shutil.copyfile(target_folder+"/"+mof+"_g.in", newfile)
         replace(newfile, "K_POINTS gamma", "K_POINTS automatic \n"+ str(i) + " " + str(i) + " " + str(i) + " 0 0 0")
-    os.system(f'cd {sys.argv[1]}; sbatch *.slurm')
+    os.system(f"cd {target_folder}; sbatch *.slurm")
 #second case: there are no input files
 elif n_of_infiles == 0:
     print("no input files found")

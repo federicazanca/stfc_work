@@ -1,7 +1,6 @@
 import os
 import sys
-import matplotlib.pyplot as plt
-import csv
+
 
 if len(sys.argv) < 2:
     print("ERROR: not enough arguments.  Usage: python convergence_analysis.py  source_directory output_file")
@@ -60,35 +59,37 @@ for j in range(len(xy_list)):
 results.close()
 
 
+if len(sys.argv) == 3:
+    import matplotlib.pyplot as plt
+    import csv
+    #2nd part: plotting the results
+    results = open(folder+out+"_results.csv")
+    # Read data from the file (we actually already have the data from before, but this is to make it generic)
+    x_field = None
+    y_field = None
 
-#2nd part: plotting the results
-results = open(folder+out+"_results.csv")
-# Read data from the file (we actually already have the data from before, but this is to make it generic)
-x_field = None
-y_field = None
+    reader = csv.DictReader(results)
+    header = reader.fieldnames
+    x_field = header[0]
+    y_field = header[1]
 
-reader = csv.DictReader(results)
-header = reader.fieldnames
-x_field = header[0]
-y_field = header[1]
+    x = []
+    y = []
 
-x = []
-y = []
+    for row in reader:
+        x.append(row[x_field])
+        y.append(float(row[y_field]))
 
-for row in reader:
-    x.append(row[x_field])
-    y.append(float(row[y_field]))
+    # Plot the data
+    plt.plot(x, y, marker='o', linestyle='-')
+    plt.xlabel(x_field.capitalize())  # Use the first column name as the X-axis label
+    plt.ylabel(y_field.capitalize())  # Use the second column name as the Y-axis label
+    plt.title('Plot of {} vs {}'.format(y_field.capitalize(), x_field.capitalize()))
+    plt.grid(True)
 
-# Plot the data
-plt.plot(x, y, marker='o', linestyle='-')
-plt.xlabel(x_field.capitalize())  # Use the first column name as the X-axis label
-plt.ylabel(y_field.capitalize())  # Use the second column name as the Y-axis label
-plt.title('Plot of {} vs {}'.format(y_field.capitalize(), x_field.capitalize()))
-plt.grid(True)
-
-# Save the plot as an image (PNG or JPEG)
-plt.savefig(folder+out+".png")  
+    # Save the plot as an image (PNG or JPEG)
+    plt.savefig(folder+out+".png")  
 
 
-# Show the plot
-plt.show()
+    # Show the plot
+    plt.show()

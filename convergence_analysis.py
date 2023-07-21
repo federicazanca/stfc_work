@@ -50,6 +50,13 @@ for file in os.listdir(folder):
 xy_list = sorted(xy_list, key=custom_sort)
 for i in range(len(xy_list)):
     results.write(xy_list[i][0]+","+xy_list[i][1]+"\n")
+
+conv_threshold = 0.01
+for j in range(len(xy_list)):
+    if float(xy_list[j][1]) - float(xy_list[j+1][1]) <= conv_threshold:
+        print("use" + str(xy_list[j]))
+        break
+
 results.close()
 
 
@@ -59,7 +66,6 @@ results = open(folder+out+"_results.csv")
 # Read data from the file (we actually already have the data from before, but this is to make it generic)
 x_field = None
 y_field = None
-
 
 reader = csv.DictReader(results)
 header = reader.fieldnames
@@ -81,7 +87,7 @@ plt.title('Plot of {} vs {}'.format(y_field.capitalize(), x_field.capitalize()))
 plt.grid(True)
 
 # Save the plot as an image (PNG or JPEG)
-plt.savefig(folder+out+"_.png")  
+plt.savefig(folder+out+".png")  
 
 
 # Show the plot

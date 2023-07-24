@@ -3,7 +3,7 @@ import sys
 
 
 if len(sys.argv) < 2:
-    print("ERROR: not enough arguments.  Usage: python convergence_analysis.py  source_directory output_file")
+    print("ERROR: not enough arguments.  Usage: 'python convergence_analysis.py  source_directory' to only get the results, 'python convergence_analysis.py  source_directory outputfile' to get the plot saved with the name outputfile")
     exit()
 
 def converged(file):
@@ -88,7 +88,7 @@ if len(sys.argv) == 3:
     plt.grid(True)
 
     # Save the plot as an image (PNG or JPEG)
-    plt.savefig(folder+out+".png")  
+    plt.savefig(folder+sys.argv[2]+".png")  
 
 
     # Show the plot

@@ -15,7 +15,7 @@ outfile=open(outputpath, "w")
 
 start_marker_1 = "End of BFGS Geometry Optimization"
 start_marker = "CELL_PARAMETERS "
-end_marker = "Writing config-only to output data dir ./uio-opt/_opt.save/"
+end_marker = "Writing config-only to output data dir "
 
 copy_lines = True
 with open(templatepath, "r") as templ:

@@ -14,7 +14,8 @@ filepath = sys.argv[1]
 folder = os.path.dirname(filepath)
 print(folder)
 log_file = open(filepath, "r")
-results = open(folder+"/geom_opt_conv.csv", "w")
+outputname = sys.argv[2]
+results = open(folder+"/"+outputname+"geom_conv.csv", "w")
 results.write("Step,Energy"+"\n")
 Lines = log_file.readlines()
 step = 0
@@ -31,8 +32,8 @@ for j in range(len(xy_list)-1):
         print("converged")
 
 results.close()
-results = folder+"/geom_opt_conv.csv"
-outputname = sys.argv[2]
+results = folder+"/"+outputname+"geom_conv.csv"
+
 
 Plotter(results, outputname)
 

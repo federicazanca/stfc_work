@@ -11,7 +11,7 @@ if len(sys.argv) < 2:
 folder = sys.argv[1]
 out = folder.split("/")[-2]
 
-results = open(folder+out+"_results.csv")
+results = folder+out+"_results.csv"
 outputname = folder+sys.argv[2]+".png"
 
 Plotter(results, outputname)

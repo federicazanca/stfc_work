@@ -64,7 +64,7 @@ if len(sys.argv) == 3:
     import csv
     from plotting import Plotter
     #2nd part: plotting the results
-    results = open(folder+out+"_results.csv")
+    results = folder+out+"_results.csv"
     outputname = folder+sys.argv[2]+".png"
 
     Plotter(results, outputname)

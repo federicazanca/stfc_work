@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 def Plotter(results,outputname):
     """The function plots x, y data from a csv file that has a header and x,y data only
     results = the path to the csv file"""
-
+    results = open(results)
     # Read data from the file 
     x_field = None
     y_field = None

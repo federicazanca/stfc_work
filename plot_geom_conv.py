@@ -25,7 +25,7 @@ for line in Lines:
         results.write(str(step)+","+str(y))
 
 results.close()
-results = open(folder+"geom_opt_conv.csv")
+results = folder+"geom_opt_conv.csv"
 outputname = sys.argv[2]
 
 Plotter(results, outputname)

@@ -22,7 +22,7 @@ for line in Lines:
         y = line.split()[-2]
         step += 1
         #xy_list.append([str(x),str(y)])
-        results.write(step+","+y)
+        results.write(str(step)+","+str(y))
 
 results.close()
 results = open(folder+"geom_opt_conv.csv", "w")

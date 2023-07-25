@@ -2,7 +2,7 @@ import os
 import sys
 import matplotlib.pyplot as plt
 import csv
-from plot import Plotter
+from plotting import Plotter
 
 
 if len(sys.argv) < 3:

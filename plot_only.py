@@ -5,13 +5,14 @@ import sys
 from plotting import Plotter
 
 if len(sys.argv) < 2:
-    print("ERROR: not enough arguments.  Usage: 'python convergence_analysis.py  source_directory'")
+    print("ERROR: not enough arguments.  Usage: 'python plot_only.py  source_directory'")
     exit()
 #We already have the results in a file, we only have to plot them
 folder = sys.argv[1]
 out = folder.split("/")[-2]
 
-results = folder+out+"_results.csv"
-outputname = folder+sys.argv[2]+".png"
-
-Plotter(results, outputname)
+for file in os.listdir(folder):
+    if file.endswith(".csv"):
+        results = os.path.join(folder, file)
+        outputname = folder+sys.argv[2]+".png"
+        Plotter(results, outputname)

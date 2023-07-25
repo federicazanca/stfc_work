@@ -14,7 +14,7 @@ filepath = sys.argv[1]
 folder = os.path.dirname(filepath)
 print(folder)
 log_file = open(filepath, "r")
-results = open(folder+"geom_opt_conv.csv", "w")
+results = open(folder+"/geom_opt_conv.csv", "w")
 results.write("Step,Energy"+"\n")
 Lines = log_file.readlines()
 step = 0
@@ -26,7 +26,7 @@ for line in Lines:
         results.write(str(step)+","+str(y)+"\n")
 
 results.close()
-results = folder+"geom_opt_conv.csv"
+results = folder+"/geom_opt_conv.csv"
 outputname = sys.argv[2]
 
 Plotter(results, outputname)

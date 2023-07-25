@@ -11,10 +11,10 @@ if len(sys.argv) < 3:
 
 #Get the output data from the log file and create the results file. Specifically for the geometry optimisation convergence
 filepath = sys.argv[1]
-folder = filepath.split("/")[-2]
+folder = os.path.dirname(filepath)
 log_file = open(filepath, "r")
 results = open(folder+"geom_opt_conv.csv", "w")
-results.write("Step,Energy")
+results.write("Step,Energy"+"\n")
 Lines = log_file.readlines()
 step = 0
 for line in Lines:

@@ -1,11 +1,11 @@
 import csv
 import matplotlib.pyplot as plt
+import os
 
-
-def Plotter(results,outputname):
+def Plotter(resultpath,outputname):
     """The function plots x, y data from a csv file that has a header and x,y data only
-    results = the path to the csv file"""
-    results = open(results)
+    resultpath = the path to the csv file"""
+    results = open(resultpath)
     # Read data from the file 
     x_field = None
     y_field = None
@@ -30,8 +30,8 @@ def Plotter(results,outputname):
     plt.grid(True)
 
     # Save the plot as an image (PNG or JPEG)
-    folder = results.split("/")[-2]
-    plt.savefig(folder+outputname+".png")  
+    folderpath = os.path.dirname(resultpath)
+    plt.savefig(folderpath+outputname+".png")  
 
 
     # Show the plot

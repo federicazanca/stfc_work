@@ -26,7 +26,7 @@ for line in Lines:
         xy_list.append([step,y])
         results.write(str(step)+","+str(y)+"\n")
 conv_threshold = 0.000001
-for j in range(len(xy_list)):
+for j in range(len(xy_list)-1):
     if float(xy_list[j][1]) - float(xy_list[j+1][1]) <= conv_threshold:
         print("converged")
 

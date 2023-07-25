@@ -1,5 +1,5 @@
 import csv
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 
 def Plotter(results,outputname):

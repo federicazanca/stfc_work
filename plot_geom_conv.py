@@ -18,12 +18,17 @@ results = open(folder+"/geom_opt_conv.csv", "w")
 results.write("Step,Energy"+"\n")
 Lines = log_file.readlines()
 step = 0
+xy_list = []
 for line in Lines:
     if "!    total energy              =" in line:
         y = line.split()[-2]
         step += 1
-        #xy_list.append([str(x),str(y)])
+        xy_list.append([step,y])
         results.write(str(step)+","+str(y)+"\n")
+conv_threshold = 0.000001
+for j in range(len(xy_list)):
+    if float(xy_list[j][1]) - float(xy_list[j+1][1]) <= conv_threshold:
+        print("converged")
 
 results.close()
 results = folder+"/geom_opt_conv.csv"

@@ -31,6 +31,7 @@ def Plotter(resultpath,outputname):
 
     # Save the plot as an image (PNG or JPEG)
     folderpath = os.path.dirname(resultpath)
+    print(folderpath)
     plt.savefig(folderpath+outputname+".png")  
 
 

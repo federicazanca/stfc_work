@@ -12,6 +12,7 @@ if len(sys.argv) < 3:
 #Get the output data from the log file and create the results file. Specifically for the geometry optimisation convergence
 filepath = sys.argv[1]
 folder = os.path.dirname(filepath)
+print(folder)
 log_file = open(filepath, "r")
 results = open(folder+"geom_opt_conv.csv", "w")
 results.write("Step,Energy"+"\n")

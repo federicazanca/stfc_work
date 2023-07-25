@@ -62,7 +62,7 @@ results.close()
 if len(sys.argv) == 3:
     import matplotlib.pyplot as plt
     import csv
-    from plot import Plotter
+    from plotting import Plotter
     #2nd part: plotting the results
     results = open(folder+out+"_results.csv")
     outputname = folder+sys.argv[2]+".png"

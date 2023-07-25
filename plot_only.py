@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import csv
 import os
 import sys
-from plot import Plotter
+from plotting import Plotter
 
 if len(sys.argv) < 2:
     print("ERROR: not enough arguments.  Usage: 'python convergence_analysis.py  source_directory'")

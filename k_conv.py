@@ -10,7 +10,7 @@ if len(sys.argv) < 2:
     print("ERROR: not enough arguments.  Usage: python k_conv.py  source_directory")
     exit()
 
-def files_endingwith(folder,end):
+def files_endingwith(folder: str, end: str)  -> int:
     """ In a folder tells you how many file ending with a specific string there are
         keywords = strings
         Return int
@@ -21,7 +21,7 @@ def files_endingwith(folder,end):
             this_many = this_many+1
     return this_many
 
-def mofname(folder,end):
+def mofname(folder: str,end: str) -> str:
     """ From the target file ending with something specific, gets the MOF name
         Keywords = strings. end keyword must contain "_"
         Return string
@@ -31,7 +31,7 @@ def mofname(folder,end):
             mof = str(file.split("_")[0])
     return mof
 
-def replace(file_path, pattern, subst):
+def replace(file_path: str, pattern: str, subst: str) -> None:
     """
     Replace a specific pattern in a file with another one
     Keyword arguments = strings

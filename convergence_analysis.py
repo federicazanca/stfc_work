@@ -6,7 +6,7 @@ if len(sys.argv) < 2:
     print("ERROR: not enough arguments.  Usage: 'python convergence_analysis.py  source_directory' to only get the results, 'python convergence_analysis.py  source_directory outputfile' to get the plot saved with the name outputfile")
     exit()
 
-def converged(file):
+def converged(file: str):
     open_file = open(file, 'r')
     Lines = open_file.readlines()
     converge = False
@@ -16,7 +16,7 @@ def converged(file):
             break
     return converge
 
-def custom_sort(item):
+def custom_sort(item: list):
     if item[0] == 'g':
         return (0, item[1])  # Sorting by 'g' first, then by the second element (number)
     else:
@@ -58,12 +58,12 @@ for j in range(len(xy_list)):
 
 results.close()
 
-
+#2nd part: plotting the results
 if len(sys.argv) == 3:
     import matplotlib.pyplot as plt
     import csv
     from plotting import Plotter
-    #2nd part: plotting the results
+    
     results = folder+out+"_results.csv"
     outputname = sys.argv[2]
 

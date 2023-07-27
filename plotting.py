@@ -2,7 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 import os
 
-def Plotter(resultpath,outputname):
+def Plotter(resultpath: str,outputname: str):
     """The function plots x, y data from a csv file that has a header and x,y data only
     resultpath = the path to the csv file"""
     results = open(resultpath)

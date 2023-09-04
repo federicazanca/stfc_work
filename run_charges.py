@@ -60,6 +60,8 @@ for root, dirs, files in os.walk(folder):
                     for i in open(slurm):
                          if "uio-CH3_Pdc-charge.log" in i:
                               replace(slurm, "uio-CH3_Pdc", mofname)
+                         if "UiO-66Zr-Pd-8.cube" in i:
+                              replace(slurm, "UiO-66Zr-Pd-8.cube", mofname".cube")
                     os.system(f"cd {target}; sbatch pp.slurm")
 
                              

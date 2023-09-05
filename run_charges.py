@@ -32,7 +32,7 @@ if len(sys.argv) < 2:
 
 folder = sys.argv[1]
 input_files = "/work4/scd/scarf1228/uio/"
-input_files = "/home/federica/"
+#input_files = "/home/federica/"
 for root, dirs, files in os.walk(folder):
         for file in files:
               #find the scf files (they should be 2 in each folder) and get the needed info: scf folder and MOF name

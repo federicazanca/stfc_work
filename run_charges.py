@@ -32,7 +32,7 @@ if len(sys.argv) < 2:
 
 folder = sys.argv[1]
 input_files = "/work4/scd/scarf1228/uio/"
-#input_files = "/home/federica/"
+input_files = "/home/federica/"
 for root, dirs, files in os.walk(folder):
         for file in files:
               #find the scf files (they should be 2 in each folder) and get the needed info: scf folder and MOF name
@@ -67,7 +67,7 @@ for root, dirs, files in os.walk(folder):
                             #modify pp files for specific mof inside the bader folder
                             for parameter in open(inp):
                                 if "outdir = '../uio-scf2'" in parameter:
-                                    replace(inp, "'../uio-scf2'", "../../"+scf_dir)
+                                    replace(inp, "'../uio-scf2'", "'../../"+scf_dir)
                                 if "fileout = 'uio-CH3_2_Pdc.cube'" in parameter:
                                     replace(inp, "uio-CH3_2_Pdc.cube", mofname+".cube")
                             for i in open(slurm):

@@ -39,30 +39,40 @@ for root, dirs, files in os.walk(folder):
               if file.endswith("scf.in"):
                     mofname = file[:-7]
                     print(mofname)
+                    ready = True
                     for line in open(folder+file,"r"):
                          #scf folder
                          if "outdir" in line:
                             scf_dir = (line.split()[2]).split("/")[1]
                             print(scf_dir)
-                    #create folder for bader charges for each mof
-                    os.makedirs(folder+"bader"+mofname)
-                    target = folder+"bader"+mofname
-                    shutil.copyfile(input_files+"pp.in",  target+"/pp.in")
-                    shutil.copyfile(input_files+"pp.slurm",  target+"/pp.slurm")
-                    inp = target + "/pp.in"
-                    slurm = target + "/pp.slurm"
-                    #modify pp files for specific mof inside the bader folder
-                    for parameter in open(inp):
-                        if "outdir = '../uio-scf2'" in parameter:
-                             replace(inp, "'../uio-scf2'", "'../"+scf_dir)
-                        if "fileout = 'uio-CH3_2_Pdc.cube'" in parameter:
-                             replace(inp, "uio-CH3_2_Pdc.cube", mofname+".cube")
-                    for i in open(slurm):
-                         if "uio-CH3_Pdc-charge.log" in i:
-                              replace(slurm, "uio-CH3_Pdc", mofname)
-                         if "UiO-66Zr-Pd-8.cube" in i:
-                              replace(slurm, "UiO-66Zr-Pd-8.cube", mofname".cube")
-                    os.system(f"cd {target}; sbatch pp.slurm")
+                         if "disk_io          = 'none'" in line:
+                            ready = False
+                            print(mofname+" didn't run the complete scf")
+                            break
+                    if ready == True:
+                        #create folder for bader charges for each mof
+                        print("making directory for "+mofname)
+                        if os.path.isdir(folder+"bader"+mofname):
+                            print("directory already exists")
+                        else:
+                            os.makedirs(folder+"bader"+mofname)
+                            target = folder+"bader"+mofname
+                            shutil.copyfile(input_files+"pp.in",  target+"/pp.in")
+                            shutil.copyfile(input_files+"pp.slurm",  target+"/pp.slurm")
+                            inp = target + "/pp.in"
+                            slurm = target + "/pp.slurm"
+                            #modify pp files for specific mof inside the bader folder
+                            for parameter in open(inp):
+                                if "outdir = '../uio-scf2'" in parameter:
+                                    replace(inp, "'../uio-scf2'", "'../"+scf_dir)
+                                if "fileout = 'uio-CH3_2_Pdc.cube'" in parameter:
+                                    replace(inp, "uio-CH3_2_Pdc.cube", mofname+".cube")
+                            for i in open(slurm):
+                                if "uio-CH3_Pdc-charge.log" in i:
+                                    replace(slurm, "uio-CH3_Pdc", mofname)
+                                if "UiO-66Zr-Pd-8.cube" in i:
+                                    replace(slurm, "UiO-66Zr-Pd-8.cube", mofname+".cube")
+                            os.system(f"cd {target}; pwd")
 
                              
                              
